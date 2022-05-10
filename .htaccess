@@ -1,0 +1,59 @@
+
+
+Options +FollowSymLinks
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+Options -MultiViews
+
+
+
+#sistema
+RewriteRule ^login$ login.php [L,QSA]
+RewriteRule ^auth$ auth.php [L,QSA]
+RewriteRule ^logout$ logout.php [L,QSA]
+RewriteRule ^home$ index.php [L,QSA]
+
+#reportes
+RewriteRule ^laboral$               index.php?id=1 [L,QSA]
+RewriteRule ^apelacion$             index.php?id=2 [L,QSA]
+RewriteRule ^audiencia$             index.php?id=3 [L,QSA]
+RewriteRule ^escritos$              index.php?id=4 [L,QSA]
+RewriteRule ^escritos-detalle$      index.php?id=5 [L,QSA]
+RewriteRule ^escritos-consolidad$   index.php?id=6 [L,QSA]
+RewriteRule ^fallo$                 index.php?id=7 [L,QSA]
+RewriteRule ^firmas$                index.php?id=8 [L,QSA]
+RewriteRule ^ingreso$               index.php?id=9 [L,QSA]
+RewriteRule ^interoperabilidad$     index.php?id=10 [L,QSA]
+RewriteRule ^modulo-violencia$      index.php?id=11 [L,QSA]
+RewriteRule ^notificar$             index.php?id=12 [L,QSA]
+RewriteRule ^orientacion$           index.php?id=13 [L,QSA]
+RewriteRule ^produccion-consolidado$            index.php?id=14 [L,QSA]
+RewriteRule ^produccion-detalle$    index.php?id=15 [L,QSA]
+RewriteRule ^usuario$    index.php?id=15 [L,QSA]
+
+#SICOP
+RewriteRule ^registro$    index.php?id=15 [L,QSA]
+
+RewriteRule ^menu$    index.php?id=15 [L,QSA]
+RewriteRule ^perfil$    index.php?id=15 [L,QSA]
+RewriteRule ^menu-perfil$    index.php?id=15 [L,QSA]
+
+
+
+ErrorDocument 404 /reportes/404
+#RewriteCond %{REQUEST_URI} ^/404$
+RewriteRule ^404$ pages/errors/404.php [L,QSA]
+
+RewriteRule ^new$    new.html [L,QSA]
+
+
+
+AddDefaultCharset utf-8
+
+# BEGIN Gzip
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript
+</IfModule>
+# END Gzip
